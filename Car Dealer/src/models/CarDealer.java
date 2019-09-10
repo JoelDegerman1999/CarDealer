@@ -32,7 +32,7 @@ public class CarDealer {
 				counter--;
 			}
 
-			if(carArray[i] != null) {
+			if (carArray[i] != null) {
 				if (carArray[i].getChassiNumber() != chassiNumber) {
 					temp[i] = carArray[i];
 				}
@@ -40,7 +40,7 @@ public class CarDealer {
 		}
 		carArray = temp;
 	}
-	
+
 	public void repairCar(Car car) {
 		System.out.println("Car with chassinumber: " + car.getChassiNumber() + " sent for repair!");
 		removeCar(car.getChassiNumber());
