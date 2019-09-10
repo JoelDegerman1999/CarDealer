@@ -14,7 +14,7 @@ public class CarFactory {
 		model = sc.nextLine();
 		System.out.print("Enter color: ");
 		color = sc.nextLine();
-		System.out.print("Ener model year: ");
+		System.out.print("Enter manufacturing date (YYYY-MM-DD): ");
 		modelYear = sc.nextLine();
 		System.out.print("Enter chassiNumber: ");
 		chassiNumber = sc.nextLine();

@@ -1,5 +1,9 @@
 package models;
 
+import static java.time.temporal.ChronoUnit.MONTHS;
+
+import java.time.LocalDate;
+
 public class CarDealer {
 
 	private Car[] carArray;
@@ -14,7 +18,7 @@ public class CarDealer {
 	public void addCar(Car car) {
 		if (carArray.length == counter) {
 			Car[] newCarArray = new Car[carArray.length + 5];
-			for (int i = 0; i < carArray.length; i++) {
+			for (int i = 0; i < counter; i++) {
 				newCarArray[i] = carArray[i];
 			}
 			carArray = newCarArray;
@@ -22,16 +26,13 @@ public class CarDealer {
 
 		carArray[counter] = car;
 		counter++;
+		System.out.println(carArray.length);
 	}
 
 	public void removeCar(String chassiNumber) {
 		Car[] temp = new Car[carArray.length];
 
-		for (int i = 0; i < carArray.length; i++) {
-			if (counter >= carArray.length) {
-				counter--;
-			}
-
+		for (int i = 0; i < counter; i++) {
 			if (carArray[i] != null) {
 				if (carArray[i].getChassiNumber() != chassiNumber) {
 					temp[i] = carArray[i];
@@ -44,6 +45,33 @@ public class CarDealer {
 	public void repairCar(Car car) {
 		System.out.println("Car with chassinumber: " + car.getChassiNumber() + " sent for repair!");
 		removeCar(car.getChassiNumber());
+	}
+
+	public long calculateAge(Car car) {
+		LocalDate modelDate = LocalDate.parse(car.getManufacturingDate());
+		LocalDate currentDate = LocalDate.now();
+		long monthsOld = MONTHS.between(modelDate, currentDate);
+		return monthsOld;
+	}
+
+	public Car showOldestCar() {
+		Car oldestCar = carArray[0];
+		for (int i = 1; i < counter; i++) {
+			if(calculateAge(oldestCar) < calculateAge(carArray[i])){
+				oldestCar = carArray[i];
+			}
+		}
+		return oldestCar;
+	}
+
+	public Car showNewestCar() {
+		Car newestCar = carArray[0];
+		for (int i = 1; i < counter; i++) {
+			if (calculateAge(newestCar) > calculateAge(carArray[i])) {
+				newestCar = carArray[i];
+			}
+		}
+		return newestCar;
 	}
 
 	public void listCars() {
