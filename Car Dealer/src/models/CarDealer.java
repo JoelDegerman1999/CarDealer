@@ -4,6 +4,8 @@ import static java.time.temporal.ChronoUnit.MONTHS;
 
 import java.time.LocalDate;
 
+import javax.swing.JOptionPane;
+
 public class CarDealer {
 
 	private Car[] carArray;
@@ -57,7 +59,7 @@ public class CarDealer {
 	public Car showOldestCar() {
 		Car oldestCar = carArray[0];
 		for (int i = 1; i < counter; i++) {
-			if(calculateAge(oldestCar) < calculateAge(carArray[i])){
+			if (calculateAge(oldestCar) < calculateAge(carArray[i])) {
 				oldestCar = carArray[i];
 			}
 		}
@@ -77,7 +79,7 @@ public class CarDealer {
 	public void listCars() {
 		for (int i = 0; i < carArray.length; i++) {
 			if (carArray[i] != null) {
-				System.out.println(carArray[i]);
+				JOptionPane.showMessageDialog(null, carArray[i]);
 			}
 		}
 	}

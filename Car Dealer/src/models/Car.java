@@ -1,9 +1,5 @@
 package models;
 
-import java.time.LocalDate;
-import java.time.Year;
-import static java.time.temporal.ChronoUnit.YEARS;
-
 public class Car {
 
 	private String brand;
@@ -35,7 +31,7 @@ public class Car {
 	public String getManufacturingDate() {
 		return manufacturingDate;
 	}
-	
+
 	public String getChassiNumber() {
 		return chassiNumber;
 	}
@@ -46,8 +42,8 @@ public class Car {
 
 	@Override
 	public String toString() {
-		return "Car : [brand = " + brand + "], [model = " + model + "], [color = " + color + "], [modelYear = " + manufacturingDate
-				+ "], [chassiNumber = " + chassiNumber + "]\n";
+		return "Car : [brand = " + brand + "], [model = " + model + "], [color = " + color + "], [modelYear = "
+				+ manufacturingDate + "], [chassiNumber = " + chassiNumber + "]\n";
 	}
-	
+
 }
